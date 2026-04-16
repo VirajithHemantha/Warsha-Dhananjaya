@@ -220,14 +220,14 @@ export default function WeddingInvitation() {
       alert("Please configure the SCRIPT_URL in App.tsx to enable form submissions.");
       return;
     }
-    
+
     setIsSubmitting(true);
     setSubmitStatus(null);
-    
+
     try {
       const params = new URLSearchParams();
       params.append("formName", formName);
-      
+
       // Explicit mapping of keys to Sheet Headers
       const fieldMapping: Record<string, string> = {
         name: "Name",
@@ -251,7 +251,7 @@ export default function WeddingInvitation() {
 
       // Since we use no-cors, we can't read the response, so we assume success if no exception
       setSubmitStatus(`${formName}_success` as any);
-      
+
       // Reset forms
       if (formName === "rsvp") setRsvpData({ name: "", guests: "1", dietary: "" });
       else setWishData({ name: "", message: "" });
@@ -342,8 +342,8 @@ export default function WeddingInvitation() {
               onClick={openInvitation}
             >
               <div className="absolute -inset-8 bg-[radial-gradient(circle,_rgba(192,192,192,0.35)_0%,_rgba(229,231,235,0.2)_45%,_transparent_75%)] blur-3xl opacity-90" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#F9FAFB] to-[#F3F4F6] rounded-[1.4rem] shadow-[0_28px_80px_-20px_rgba(55,65,81,0.35)] border border-theme-200/80 overflow-hidden" />
-              <div className="absolute inset-[10px] rounded-[1.05rem] border border-theme-300/45 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FDFDFD] to-[#F9FAFB] rounded-[1.4rem] shadow-[0_28px_80px_-20px_rgba(55,65,81,0.25)] border border-theme-200/60 overflow-hidden" />
+              <div className="absolute inset-[10px] rounded-[1.05rem] border border-theme-400/20 pointer-events-none" />
               <div className="absolute inset-0 opacity-[0.07] paper-grain-strong" />
 
               <motion.div
@@ -353,55 +353,55 @@ export default function WeddingInvitation() {
                 className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-white/50 to-transparent blur-lg z-20 pointer-events-none"
               />
 
-              <div className="absolute top-[-1px] left-1/2 -translate-x-1/2 w-[88%] h-[44%] bg-gradient-to-b from-theme-100/90 to-theme-50/60 clip-path-envelope z-10" />
-              <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[84%] h-[39%] border border-theme-300/45 clip-path-envelope z-10 opacity-60" />
+              <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[89%] h-[45%] bg-gradient-to-b from-white to-slate-50/80 clip-path-envelope z-10 border-b-[2.5px] border-theme-400/80" />
+              <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[84%] h-[39%] border-[1.5px] border-theme-300 clip-path-envelope z-10 opacity-70" />
 
               {/* Left Flap */}
               <motion.div
-                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-[#3F3F46] via-[#52525B] to-[#18181B] z-30 shadow-[8px_0_28px_rgba(31,41,55,0.45)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem]"
+                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-white via-[#FDFDFD] to-[#F8FAFC] z-30 shadow-[10px_0_35px_rgba(0,0,0,0.12)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem] border-y-[2.5px] border-l-[2.5px] border-theme-400"
                 whileHover={{ rotateY: -14 }}
                 transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
-                <div className="absolute inset-0 opacity-20 paper-grain" />
-                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
-                <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-tr from-black/25 via-transparent to-white/10" />
+                <div className="absolute inset-0 opacity-15 paper-grain" />
+                <div className="absolute right-0 top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-theme-300 via-theme-400 to-theme-300 shadow-[2px_0_10px_rgba(192,192,192,0.5)]" />
+                <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-tr from-stone-200/20 via-transparent to-white/60" />
 
                 {/* Envelope Illustrations */}
                 <InviteImage
                   src={flowerCornerImage}
-                  className="absolute top-0 left-0 w-44 md:w-56 h-auto opacity-70 rotate-[270deg]"
+                  className="absolute top-0 left-0 w-44 md:w-56 h-auto opacity-40 rotate-[270deg]"
                   alt=""
                 />
                 <InviteImage
                   src={flowerCornerImage}
-                  className="absolute bottom-0 left-0 w-44 md:w-56 h-auto opacity-70 rotate-180"
+                  className="absolute bottom-0 left-0 w-44 md:w-56 h-auto opacity-40 rotate-180"
                   alt=""
                 />
 
-                <div className="text-theme-100/35 rotate-90 whitespace-nowrap text-xs tracking-[0.55em] uppercase font-bold relative z-10">
+                <div className="silver-text rotate-90 whitespace-nowrap text-[13px] tracking-[0.6em] uppercase relative z-10 drop-shadow-sm">
                   NATHASHA & VISHAN
                 </div>
               </motion.div>
 
               {/* Right Flap */}
               <motion.div
-                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-[#3F3F46] via-[#52525B] to-[#18181B] z-30 shadow-[-8px_0_28px_rgba(31,41,55,0.45)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem]"
+                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-white via-[#FDFDFD] to-[#F8FAFC] z-30 shadow-[-10px_0_35px_rgba(0,0,0,0.12)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem] border-y-[2.5px] border-r-[2.5px] border-theme-400"
                 whileHover={{ rotateY: 14 }}
                 transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
-                <div className="absolute inset-0 opacity-20 paper-grain" />
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
-                <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-black/25 via-transparent to-white/10" />
+                <div className="absolute inset-0 opacity-15 paper-grain" />
+                <div className="absolute left-0 top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-theme-300 via-theme-400 to-theme-300 shadow-[-2px_0_10px_rgba(192,192,192,0.5)]" />
+                <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-stone-200/20 via-transparent to-white/60" />
 
                 {/* Envelope Illustrations */}
                 <InviteImage
                   src={flowerCornerImage}
-                  className="absolute top-0 right-0 w-44 md:w-56 h-auto opacity-70 rotate-0"
+                  className="absolute top-0 right-0 w-44 md:w-56 h-auto opacity-40 rotate-0"
                   alt=""
                 />
                 <InviteImage
                   src={flowerCornerImage}
-                  className="absolute bottom-0 right-0 w-44 md:w-56 h-auto opacity-70 rotate-90"
+                  className="absolute bottom-0 right-0 w-44 md:w-56 h-auto opacity-40 rotate-90"
                   alt=""
                 />
               </motion.div>
@@ -410,10 +410,10 @@ export default function WeddingInvitation() {
               <motion.div
                 whileHover={{ scale: 1.1, rotate: -6 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-theme-200 via-[#FFFFFF] to-theme-300 shadow-[0_20px_45px_-10px_rgba(75,85,99,0.65)] border-[5px] border-[#71717A] flex items-center justify-center group-hover:shadow-theme-500/40"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-white via-stone-50 to-theme-100 shadow-[0_20px_45px_-10px_rgba(75,85,99,0.35)] border-[6px] border-[#C0C0C0] flex items-center justify-center group-hover:shadow-theme-400/40"
               >
-                <div className="absolute inset-1.5 rounded-full border border-theme-400/50" />
-                <div className="absolute inset-3 rounded-full border border-theme-500/30" />
+                <div className="absolute inset-1.5 rounded-full border border-theme-300/50" />
+                <div className="absolute inset-3 rounded-full border border-theme-400/30" />
                 <div className="text-center relative z-10">
                   <p className="font-cinzel text-[1.7rem] font-bold text-stone-800 leading-none">N&V</p>
                   <div className="h-px w-12 bg-stone-400 mx-auto my-1.5" />
@@ -447,7 +447,7 @@ export default function WeddingInvitation() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               onClick={() => setIsOpened(false)}
-              className="fixed top-6 right-6 z-50 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg border border-theme-100 text-theme-800 hover:bg-theme-50 transition-colors"
+              className="fixed top-6 right-6 z-50 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-xl border-2 border-theme-400/40 text-theme-800 hover:bg-theme-50 transition-all hover:scale-110"
             >
               <div className="flex flex-col items-center">
                 <div className="text-[8px] uppercase tracking-widest font-bold">Close</div>
@@ -477,8 +477,8 @@ export default function WeddingInvitation() {
                 className="relative z-10 w-full max-w-[420px] min-h-[500px] h-[85vh] md:h-[80vh] bg-[#ffffff] rounded-t-full shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] border border-theme-100 flex flex-col items-center overflow-hidden p-6 pt-12 md:p-10 md:pt-16"
               >
                 {/* Arch outline decoration */}
-                <div className="absolute inset-3 sm:inset-5 border-[0.5px] border-theme-400/40 rounded-t-full pointer-events-none" />
-                <div className="absolute inset-4 sm:inset-6 border border-theme-200/40 rounded-t-full pointer-events-none" />
+                <div className="absolute inset-3 sm:inset-5 border-[2px] border-theme-400/50 rounded-t-full pointer-events-none" />
+                <div className="absolute inset-4 sm:inset-6 border-[1px] border-theme-200/40 rounded-t-full pointer-events-none" />
 
                 {/* Top Circle Arch Floral Arrangement */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[320px] h-auto z-20 pointer-events-none -translate-y-4">
@@ -589,13 +589,13 @@ export default function WeddingInvitation() {
                   viewport={{ once: true }}
                   className="flex flex-col items-center mb-8 md:mb-16"
                 >
-                  <div className="w-px h-16 md:h-24 bg-gradient-to-b from-transparent via-theme-300 to-transparent mb-8 md:mb-12" />
+                  <div className="w-[2px] h-16 md:h-24 bg-gradient-to-b from-transparent via-theme-400 to-transparent mb-8 md:mb-12 shadow-[0_0_10px_rgba(192,192,192,0.3)]" />
                   <p className="text-zinc-800 text-[10px] md:text-[14px] tracking-[0.6em] md:tracking-[0.8em] uppercase font-bold text-center leading-relaxed max-w-2xl px-4">
                     <span className="text-theme-500 block text-[8px] md:text-[10px] mb-3 md:mb-4 tracking-[0.8em]">Wedding Celebration</span>
                     You are cordially invited to<br className="hidden md:block" />
                     <span className="text-theme-600">celebrate the union of</span>
                   </p>
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-theme-300 to-transparent mt-8 md:mt-10" />
+                  <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-theme-400 to-transparent mt-8 md:mt-10 shadow-[0_0_10px_rgba(192,192,192,0.3)]" />
                 </motion.div>
 
                 <motion.div
@@ -625,7 +625,7 @@ export default function WeddingInvitation() {
                     viewport={{ once: true }}
                     className="relative bg-white w-full max-w-[320px] p-6 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-theme-100/50 rounded-tl-[100px] rounded-br-[100px] md:rounded-tl-[130px] md:rounded-br-[130px] overflow-hidden group flex flex-col justify-center text-center items-center"
                   >
-                    <div className="absolute inset-2 border border-theme-200/50 rounded-tl-[90px] rounded-br-[90px] md:rounded-tl-[120px] md:rounded-br-[120px] pointer-events-none" />
+                    <div className="absolute inset-2 border-[1.5px] border-theme-300/70 rounded-tl-[90px] rounded-br-[90px] md:rounded-tl-[120px] md:rounded-br-[120px] pointer-events-none shadow-[inset_0_0_15px_rgba(192,192,192,0.1)]" />
                     <div className="absolute inset-0 opacity-[0.02] paper-grain pointer-events-none" />
                     <div className="relative z-10 space-y-4 py-8 md:py-12">
                       <div className="space-y-2">
@@ -659,7 +659,7 @@ export default function WeddingInvitation() {
                     transition={{ delay: 0.1 }}
                     className="relative bg-white w-full max-w-[320px] p-6 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-theme-100/50 rounded-tr-[100px] rounded-bl-[100px] md:rounded-tr-[130px] md:rounded-bl-[130px] overflow-hidden group flex flex-col justify-center text-center items-center md:mt-24"
                   >
-                    <div className="absolute inset-2 border border-theme-200/50 rounded-tr-[90px] rounded-bl-[90px] md:rounded-tr-[120px] md:rounded-bl-[120px] pointer-events-none" />
+                    <div className="absolute inset-2 border-[1.5px] border-theme-300/70 rounded-tr-[90px] rounded-bl-[90px] md:rounded-tr-[120px] md:rounded-bl-[120px] pointer-events-none shadow-[inset_0_0_15px_rgba(192,192,192,0.1)]" />
                     <div className="absolute inset-0 opacity-[0.02] paper-grain pointer-events-none" />
                     <div className="relative z-10 space-y-4 py-8 md:py-12">
                       <div className="space-y-2">
@@ -732,9 +732,9 @@ export default function WeddingInvitation() {
                   </div>
 
                   <div className="flex items-center gap-4 md:gap-8 justify-center relative z-10 w-full mb-6 mt-4 opacity-70">
-                    <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent to-theme-400" />
-                    <div className="w-1.5 h-1.5 rotate-45 bg-theme-500 shrink-0" />
-                    <div className="h-px w-16 md:w-32 bg-gradient-to-l from-transparent to-theme-400" />
+                    <div className="h-[2px] w-16 md:w-32 bg-gradient-to-r from-transparent to-theme-500 shadow-[0_0_8px_rgba(192,192,192,0.4)]" />
+                    <div className="w-2 h-2 rotate-45 bg-theme-600 shrink-0" />
+                    <div className="h-[2px] w-16 md:w-32 bg-gradient-to-l from-transparent to-theme-500 shadow-[0_0_8px_rgba(192,192,192,0.4)]" />
                   </div>
 
                   <h2 className="font-cinzel text-3xl md:text-5xl text-theme-900 mb-8 relative z-10 tracking-widest font-bold drop-shadow-sm px-4 leading-[1.4]">
@@ -768,7 +768,7 @@ export default function WeddingInvitation() {
                   >
                     <div className="flex flex-col items-start gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-8 h-px bg-theme-400" />
+                        <div className="w-10 h-[2px] bg-theme-500 shadow-[0_0_8px_rgba(192,192,192,0.4)]" />
                         <span className="text-theme-600 font-bold uppercase tracking-[0.4em] text-[9px] md:text-[11px]">The Venue</span>
                       </div>
                       <h2 className="font-playball text-[3.5rem] sm:text-[4rem] md:text-[5.5rem] text-theme-900 leading-[1] drop-shadow-sm ml-[-4px]">
@@ -979,7 +979,7 @@ export default function WeddingInvitation() {
                           />
                         </div>
                         <div className="pt-6 flex justify-center">
-                          <button 
+                          <button
                             disabled={isSubmitting}
                             className="bg-theme-800 text-white px-12 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-theme-900 hover:shadow-xl hover:shadow-theme-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group/btn inline-flex items-center gap-4"
                           >

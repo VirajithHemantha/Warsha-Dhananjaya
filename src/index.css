@@ -23,6 +23,20 @@
   --color-theme-900: #1F2937;
 }
 
+.silver-border {
+  border: 2px solid #C0C0C0;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 0 10px rgba(192, 192, 192, 0.3);
+}
+
+.silver-text {
+  background: linear-gradient(135deg, #7d7d7d 0%, #d1d1d1 50%, #7d7d7d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
 :root {
   background-color: var(--color-paper);
   color: #2D2D2D;
