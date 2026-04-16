@@ -1011,11 +1011,30 @@ export default function WeddingInvitation() {
               </section>
 
               {/* Footer */}
-              <footer className="py-12 border-t border-theme-200/30 text-center relative z-10 space-y-3">
-                <p className="text-[8px] md:text-[10px] uppercase tracking-[0.5em] text-stone-400 font-bold">
-                  © 2026 Nathasha & Vishan. <span className="hidden md:inline">|</span><br className="md:hidden block mt-2" /> All rights reserved.
+              <footer className="py-20 border-t border-theme-200/30 text-center relative z-10 space-y-6">
+                <p className="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-stone-500 font-bold">
+                  © 2026 Nathasha & Vishan. All rights reserved.
                 </p>
 
+                <div className="flex flex-col items-center gap-2 pt-8">
+                  <a
+                    href="https://wa.me/94707819074"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center"
+                  >
+                    <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-stone-400 font-bold group-hover:text-theme-600 transition-colors">
+                      Design by
+                    </span>
+                    <span className="font-playball text-2xl md:text-3xl text-theme-800 group-hover:scale-110 transition-transform duration-500">
+                      invitemint
+                    </span>
+                    <span className="text-[9px] md:text-[11px] tracking-[0.2em] text-stone-400 font-medium mt-1">
+                      +94 70 781 9074
+                    </span>
+                    <div className="w-8 h-px bg-theme-300 group-hover:w-20 transition-all duration-500 mt-2" />
+                  </a>
+                </div>
               </footer>
             </div>
           </motion.div>
