@@ -330,9 +330,9 @@ export default function WeddingInvitation() {
           >
             {/* Colorful Animated Background Flares */}
             <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-sky-50" />
-            
+
             <motion.div
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.15, 0.25, 0.15],
                 x: [-20, 20, -20],
@@ -342,7 +342,7 @@ export default function WeddingInvitation() {
               className="absolute -top-[10%] -left-[10%] w-[60%] aspect-square bg-gradient-to-br from-pink-300/30 to-purple-300/30 blur-[120px] rounded-full"
             />
             <motion.div
-              animate={{ 
+              animate={{
                 scale: [1.2, 1, 1.2],
                 opacity: [0.1, 0.2, 0.1],
                 x: [20, -20, 20],
@@ -353,7 +353,7 @@ export default function WeddingInvitation() {
             />
 
             <FloatingPetals disabled={isLowPerformanceMode} vibrant={true} />
-            
+
             <div className="absolute inset-0 opacity-10 paper-grain pointer-events-none" />
 
             {/* Background Video Strip for Mobile / Full for Desktop */}
@@ -372,7 +372,7 @@ export default function WeddingInvitation() {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 md:hidden" />
               </div>
             </div>
-            
+
             {/* Soft colorful overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-rose-50/10 via-transparent to-sky-50/20" />
 
@@ -410,10 +410,10 @@ export default function WeddingInvitation() {
 
             {/* More corner flowers but with color overlay since we only have silver images */}
             <div className="absolute top-0 left-0 w-44 h-44 opacity-20 pointer-events-none overflow-hidden">
-                <img src={flowerCornerImage} className="w-full h-full object-contain -rotate-90 sepia-[.3] hue-rotate-[320deg] saturate-[2]" alt="" />
+              <img src={flowerCornerImage} className="w-full h-full object-contain -rotate-90 sepia-[.3] hue-rotate-[320deg] saturate-[2]" alt="" />
             </div>
             <div className="absolute top-0 right-0 w-44 h-44 opacity-20 pointer-events-none overflow-hidden">
-                <img src={flowerCornerImage} className="w-full h-full object-contain sepia-[.3] hue-rotate-[200deg] saturate-[2]" alt="" />
+              <img src={flowerCornerImage} className="w-full h-full object-contain sepia-[.3] hue-rotate-[200deg] saturate-[2]" alt="" />
             </div>
           </motion.div>
         ) : (
@@ -689,7 +689,39 @@ export default function WeddingInvitation() {
                     </div>
                   </div>
 
+                  {/* Poruwa Ceremony Highlight */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-16 md:mt-24 pt-12 border-t border-theme-100/60 w-full max-w-[320px] md:max-w-xl flex flex-col items-center relative"
+                  >
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] px-6">
+                      <Sparkles className="w-6 h-6 text-theme-400" />
+                    </div>
 
+                    <div className="space-y-4 flex flex-col items-center">
+                      <p className="text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-stone-400 font-bold">Auspicious Ceremony</p>
+                      <h4 className="font-cinzel text-2xl md:text-4xl text-theme-900 tracking-[0.3em] font-bold drop-shadow-sm px-4 text-center">PORUWA CEREMONY</h4>
+
+                      <div className="flex items-center gap-6 mt-6">
+                        <div className="w-12 md:w-20 h-[1.5px] bg-gradient-to-r from-transparent to-theme-300" />
+                        <div className="flex flex-col items-center">
+                          <p className="font-cinzel text-xl md:text-2xl text-theme-700 font-bold tracking-[0.2em]">10:15 AM</p>
+                          <p className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-theme-400 font-bold mt-1">Onwards</p>
+                        </div>
+                        <div className="w-12 md:w-20 h-[1.5px] bg-gradient-to-l from-transparent to-theme-300" />
+                      </div>
+                    </div>
+
+                    {/* Decorative element below */}
+                    <div className="mt-10 flex items-center gap-2 opacity-30">
+                      <div className="w-1.5 h-1.5 rounded-full bg-theme-300" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-theme-400" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-theme-300" />
+                    </div>
+                  </motion.div>
                 </motion.div>
               </div>
             </section>
