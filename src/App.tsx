@@ -53,7 +53,7 @@ function MandalaFrame({ minimal = false }: { minimal?: boolean }) {
   );
 }
 
-function FloatingPetals({ disabled = false }: { disabled?: boolean }) {
+function FloatingPetals({ disabled = false, vibrant = false }: { disabled?: boolean; vibrant?: boolean }) {
   const [isLowPowerMode, setIsLowPowerMode] = useState(false);
   const [petals, setPetals] = useState<Array<{
     id: number;
@@ -81,8 +81,11 @@ function FloatingPetals({ disabled = false }: { disabled?: boolean }) {
       return;
     }
 
-    const colors = ["#E5E7EB", "#D1D5DB", "#C0C0C0", "#F9FAFB"];
-    const petalCount = isMobile ? 10 : 18;
+    const silverColors = ["#E5E7EB", "#D1D5DB", "#C0C0C0", "#F9FAFB"];
+    const vibrantColors = ["#FFD700", "#FFC0CB", "#B0E0E6", "#D8BFD8", "#F0E68C", "#E6E6FA"];
+    const colors = vibrant ? vibrantColors : silverColors;
+
+    const petalCount = isMobile ? (vibrant ? 15 : 10) : (vibrant ? 25 : 18);
     const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -95,7 +98,7 @@ function FloatingPetals({ disabled = false }: { disabled?: boolean }) {
     }));
 
     setPetals(newPetals);
-  }, [disabled]);
+  }, [disabled, vibrant]);
 
   if (disabled) {
     return null;
@@ -315,125 +318,103 @@ export default function WeddingInvitation() {
       <AnimatePresence mode="wait">
         {!isOpened ? (
           <motion.div
-            key="envelope-stage"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            key="video-intro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{
               opacity: 0,
-              scale: 1.1,
-              transition: { duration: 0.8, ease: "easeInOut" }
+              scale: 1.05,
+              transition: { duration: 1, ease: "easeInOut" }
             }}
-            className="flex flex-col items-center justify-center p-6 relative z-10 w-full"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white overflow-hidden"
           >
-            {/* Title */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
-              <span className="inline-block px-5 py-2 rounded-full bg-theme-50 border border-theme-200 text-[10px] uppercase tracking-[0.5em] text-theme-700 font-bold mb-6">
-                Save the Date
-              </span>
-              <h1 className="font-cinzel text-4xl md:text-5xl text-stone-800 mb-4 tracking-tight">
-                Nathasha & Vishan
-              </h1>
-              <p className="text-stone-500 text-sm tracking-[0.2em] font-light">2026.05.18</p>
-            </motion.div>
+            {/* Colorful Animated Background Flares */}
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-sky-50" />
+            
+            <motion.div
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.15, 0.25, 0.15],
+                x: [-20, 20, -20],
+                y: [-20, 20, -20]
+              }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute -top-[10%] -left-[10%] w-[60%] aspect-square bg-gradient-to-br from-pink-300/30 to-purple-300/30 blur-[120px] rounded-full"
+            />
+            <motion.div
+              animate={{ 
+                scale: [1.2, 1, 1.2],
+                opacity: [0.1, 0.2, 0.1],
+                x: [20, -20, 20],
+                y: [20, -20, 20]
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              className="absolute -bottom-[15%] -right-[15%] w-[70%] aspect-square bg-gradient-to-tl from-amber-200/40 to-rose-200/40 blur-[140px] rounded-full"
+            />
 
-            {/* Gatefold Envelope */}
-            <div
-              className="relative w-full max-w-[430px] aspect-[1/1.42] flex items-center justify-center group cursor-pointer perspective-1000"
-              onClick={openInvitation}
-            >
-              <div className="absolute -inset-8 bg-[radial-gradient(circle,_rgba(192,192,192,0.35)_0%,_rgba(229,231,235,0.2)_45%,_transparent_75%)] blur-3xl opacity-90" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FDFDFD] to-[#F9FAFB] rounded-[1.4rem] shadow-[0_28px_80px_-20px_rgba(55,65,81,0.25)] border border-theme-200/60 overflow-hidden" />
-              <div className="absolute inset-[10px] rounded-[1.05rem] border border-theme-400/20 pointer-events-none" />
-              <div className="absolute inset-0 opacity-[0.07] paper-grain-strong" />
+            <FloatingPetals disabled={isLowPerformanceMode} vibrant={true} />
+            
+            <div className="absolute inset-0 opacity-10 paper-grain pointer-events-none" />
 
-              <motion.div
-                initial={{ opacity: 0.15, x: -140 }}
-                animate={{ opacity: [0.08, 0.2, 0.08], x: [-160, 260, -160] }}
-                transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-white/50 to-transparent blur-lg z-20 pointer-events-none"
-              />
-
-              <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[89%] h-[45%] bg-gradient-to-b from-white to-slate-50/80 clip-path-envelope z-10 border-b-[2.5px] border-theme-400/80" />
-              <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[84%] h-[39%] border-[1.5px] border-theme-300 clip-path-envelope z-10 opacity-70" />
-
-              {/* Left Flap */}
-              <motion.div
-                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-white via-[#FDFDFD] to-[#F8FAFC] z-30 shadow-[10px_0_35px_rgba(0,0,0,0.12)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem] border-y-[2.5px] border-l-[2.5px] border-theme-400"
-                whileHover={{ rotateY: -14 }}
-                transition={{ type: "spring", stiffness: 110, damping: 16 }}
-              >
-                <div className="absolute inset-0 opacity-15 paper-grain" />
-                <div className="absolute right-0 top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-theme-300 via-theme-400 to-theme-300 shadow-[2px_0_10px_rgba(192,192,192,0.5)]" />
-                <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-tr from-stone-200/20 via-transparent to-white/60" />
-
-                {/* Envelope Illustrations */}
-                <InviteImage
-                  src={flowerCornerImage}
-                  className="absolute top-0 left-0 w-44 md:w-56 h-auto opacity-40 rotate-[270deg]"
-                  alt=""
+            {/* Background Video Strip for Mobile / Full for Desktop */}
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-[35vh] md:h-full group">
+                <video
+                  autoPlay
+                  muted
+                  playsInline
+                  onEnded={openInvitation}
+                  className="w-full h-full object-cover shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)]"
+                  src="/Use_the_uploaded_202604161807.mp4"
                 />
-                <InviteImage
-                  src={flowerCornerImage}
-                  className="absolute bottom-0 left-0 w-44 md:w-56 h-auto opacity-40 rotate-180"
-                  alt=""
-                />
-
-                <div className="silver-text rotate-90 whitespace-nowrap text-[13px] tracking-[0.6em] uppercase relative z-10 drop-shadow-sm">
-                  NATHASHA & VISHAN
-                </div>
-              </motion.div>
-
-              {/* Right Flap */}
-              <motion.div
-                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-white via-[#FDFDFD] to-[#F8FAFC] z-30 shadow-[-10px_0_35px_rgba(0,0,0,0.12)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem] border-y-[2.5px] border-r-[2.5px] border-theme-400"
-                whileHover={{ rotateY: 14 }}
-                transition={{ type: "spring", stiffness: 110, damping: 16 }}
-              >
-                <div className="absolute inset-0 opacity-15 paper-grain" />
-                <div className="absolute left-0 top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-theme-300 via-theme-400 to-theme-300 shadow-[-2px_0_10px_rgba(192,192,192,0.5)]" />
-                <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-stone-200/20 via-transparent to-white/60" />
-
-                {/* Envelope Illustrations */}
-                <InviteImage
-                  src={flowerCornerImage}
-                  className="absolute top-0 right-0 w-44 md:w-56 h-auto opacity-40 rotate-0"
-                  alt=""
-                />
-                <InviteImage
-                  src={flowerCornerImage}
-                  className="absolute bottom-0 right-0 w-44 md:w-56 h-auto opacity-40 rotate-90"
-                  alt=""
-                />
-              </motion.div>
-
-              {/* The Seal Button */}
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: -6 }}
-                whileTap={{ scale: 0.9 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-white via-stone-50 to-theme-100 shadow-[0_20px_45px_-10px_rgba(75,85,99,0.35)] border-[6px] border-[#C0C0C0] flex items-center justify-center group-hover:shadow-theme-400/40"
-              >
-                <div className="absolute inset-1.5 rounded-full border border-theme-300/50" />
-                <div className="absolute inset-3 rounded-full border border-theme-400/30" />
-                <div className="text-center relative z-10">
-                  <p className="font-cinzel text-[1.7rem] font-bold text-stone-800 leading-none">N&V</p>
-                  <div className="h-px w-12 bg-stone-400 mx-auto my-1.5" />
-                  <p className="text-[8px] uppercase tracking-[0.35em] font-bold text-stone-600">Open</p>
-                </div>
-              </motion.div>
-
-              {/* Card Preview inside (Mandala) */}
-              <div className="absolute inset-10 opacity-45 flex items-center justify-center z-10">
-                <InviteImage src={flowerImage} alt="" className={`w-full max-w-[280px] h-auto ${isLowPerformanceMode ? "" : "animate-spin-slow-very"}`} style={{ animationDuration: '40s' }} />
-              </div>
-
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 text-[8px] uppercase tracking-[0.45em] text-theme-700/80 font-bold bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-theme-200/80 shadow-sm">
-                Tap Seal To Open
+                {/* Colorful Frame for the strip */}
+                <div className="absolute inset-0 border-y-2 border-white/40 md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 md:hidden" />
               </div>
             </div>
+            
+            {/* Soft colorful overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-rose-50/10 via-transparent to-sky-50/20" />
 
-            <p className="mt-8 text-[11px] uppercase tracking-[0.6em] text-stone-400 font-bold animate-pulse">
-              Tap to Reveal
-            </p>
+            {/* Interaction Button with colorful glow */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="relative z-[101] mt-auto mb-20 md:mb-24"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-pink-200 via-amber-100 to-sky-200 blur-2xl opacity-40 animate-pulse" />
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 1)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={openInvitation}
+                className="group relative flex flex-col items-center gap-4 bg-white/95 backdrop-blur-md border border-white/60 px-14 py-6 rounded-full text-stone-800 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 hover:shadow-pink-200/30"
+              >
+                <span className="font-cinzel text-sm tracking-[0.6em] uppercase font-bold bg-gradient-to-r from-theme-700 to-theme-900 bg-clip-text text-transparent">
+                  Open Invitation
+                </span>
+                <div className="w-10 h-[1.5px] bg-gradient-to-r from-pink-300 via-amber-300 to-sky-300 group-hover:w-20 transition-all duration-500" />
+                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-stone-400 animate-pulse">
+                  Tap to Reveal
+                </span>
+              </motion.button>
+            </motion.div>
+
+            {/* Monogram with color accent */}
+            <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+              <p className="font-cinzel text-[11px] tracking-[0.8em] font-bold uppercase flex flex-col items-center gap-3">
+                <span className="bg-gradient-to-r from-pink-400 via-amber-400 to-sky-400 bg-clip-text text-transparent opacity-80">N & V</span>
+                <span className="h-px w-8 bg-gradient-to-r from-transparent via-stone-300 to-transparent" />
+              </p>
+            </div>
+
+            {/* More corner flowers but with color overlay since we only have silver images */}
+            <div className="absolute top-0 left-0 w-44 h-44 opacity-20 pointer-events-none overflow-hidden">
+                <img src={flowerCornerImage} className="w-full h-full object-contain -rotate-90 sepia-[.3] hue-rotate-[320deg] saturate-[2]" alt="" />
+            </div>
+            <div className="absolute top-0 right-0 w-44 h-44 opacity-20 pointer-events-none overflow-hidden">
+                <img src={flowerCornerImage} className="w-full h-full object-contain sepia-[.3] hue-rotate-[200deg] saturate-[2]" alt="" />
+            </div>
           </motion.div>
         ) : (
           <motion.div
@@ -481,7 +462,7 @@ export default function WeddingInvitation() {
                 <div className="absolute inset-4 sm:inset-6 border-[1px] border-theme-200/40 rounded-t-full pointer-events-none" />
 
                 {/* Top Circle Arch Floral Arrangement */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[320px] h-auto z-20 pointer-events-none -translate-y-4">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] h-auto z-20 pointer-events-none -translate-y-12">
                   <motion.img
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
