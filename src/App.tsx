@@ -4,7 +4,7 @@ import { Sparkles, MapPin, Calendar, Clock } from "lucide-react";
 
 /**
  * Premium White & Silver Wedding Invitation Theme
- * Names: Nathasha & Vishan
+ * Names: Vishan & Nathasha
  * Background: White
  * Accents: Silver
  */
@@ -403,7 +403,7 @@ export default function WeddingInvitation() {
             {/* Monogram with color accent */}
             <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
               <p className="font-cinzel text-[11px] tracking-[0.8em] font-bold uppercase flex flex-col items-center gap-3">
-                <span className="bg-gradient-to-r from-pink-400 via-amber-400 to-sky-400 bg-clip-text text-transparent opacity-80">N & V</span>
+                <span className="bg-gradient-to-r from-pink-400 via-amber-400 to-sky-400 bg-clip-text text-transparent opacity-80">V & N</span>
                 <span className="h-px w-8 bg-gradient-to-r from-transparent via-stone-300 to-transparent" />
               </p>
             </div>
@@ -447,7 +447,7 @@ export default function WeddingInvitation() {
                 transition={{ duration: 2, ease: "easeOut" }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-cinzel text-[40vw] text-theme-900 pointer-events-none whitespace-nowrap leading-none select-none z-0"
               >
-                N&V
+                V&N
               </motion.div>
 
               {/* Central Premium Arch Card */}
@@ -485,7 +485,7 @@ export default function WeddingInvitation() {
                       transition={{ delay: 1, duration: 0.8 }}
                       className="font-playball text-[3rem] sm:text-[3.5rem] md:text-[5rem] text-stone-800 leading-[1.1] drop-shadow-sm"
                     >
-                      Nathasha
+                      Vishan
                     </motion.h1>
                     <motion.div
                       initial={{ scale: 0 }}
@@ -501,7 +501,7 @@ export default function WeddingInvitation() {
                       transition={{ delay: 1.4, duration: 0.8 }}
                       className="font-playball text-[3rem] sm:text-[3.5rem] md:text-[5rem] text-stone-800 leading-[1.1] drop-shadow-sm"
                     >
-                      Vishan
+                      Nathasha
                     </motion.h1>
 
                     <motion.div
@@ -599,7 +599,7 @@ export default function WeddingInvitation() {
 
                 <div className="relative w-full flex flex-col md:flex-row items-center justify-center md:items-stretch gap-6 md:gap-10 my-12 md:my-20 z-10 px-2 lg:px-8">
 
-                  {/* Nathasha's Card */}
+                  {/* Vishan's Card */}
                   <motion.div
                     initial={{ opacity: 0, x: -30, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -610,10 +610,10 @@ export default function WeddingInvitation() {
                     <div className="absolute inset-0 opacity-[0.02] paper-grain pointer-events-none" />
                     <div className="relative z-10 space-y-4 py-8 md:py-12">
                       <div className="space-y-2">
-                        <p className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-stone-400">Beloved daughter of</p>
-                        <p className="text-xs md:text-sm font-cinzel text-stone-600 tracking-wide leading-relaxed">Mr. Westan Jayarathne<br />& Mrs. Srima Rajapaksha</p>
+                        <p className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-stone-400">Beloved son of</p>
+                        <p className="text-xs md:text-sm font-cinzel text-stone-600 tracking-wide leading-relaxed">Mr. Thilak Kellapatha<br />& Mrs. Jeewani Hewage</p>
                       </div>
-                      <h3 className="text-5xl md:text-7xl font-playball text-theme-800 group-hover:scale-110 transition-transform duration-700 pt-6 drop-shadow-sm">Nathasha</h3>
+                      <h3 className="text-5xl md:text-7xl font-playball text-theme-800 group-hover:scale-110 transition-transform duration-700 pt-6 drop-shadow-sm">Vishan</h3>
                     </div>
                   </motion.div>
 
@@ -632,7 +632,7 @@ export default function WeddingInvitation() {
                     <div className="hidden md:block w-px h-32 bg-gradient-to-b from-theme-300 to-transparent" />
                   </div>
 
-                  {/* Vishan's Card - Offset structurally on desktop */}
+                  {/* Nathasha's Card - Offset structurally on desktop */}
                   <motion.div
                     initial={{ opacity: 0, x: 30, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -644,10 +644,10 @@ export default function WeddingInvitation() {
                     <div className="absolute inset-0 opacity-[0.02] paper-grain pointer-events-none" />
                     <div className="relative z-10 space-y-4 py-8 md:py-12">
                       <div className="space-y-2">
-                        <p className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-stone-400">Beloved son of</p>
-                        <p className="text-xs md:text-sm font-cinzel text-stone-600 tracking-wide leading-relaxed">Mr. Thilak Kellapatha<br />& Mrs. Jeewani Hewage</p>
+                        <p className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-stone-400">Beloved daughter of</p>
+                        <p className="text-xs md:text-sm font-cinzel text-stone-600 tracking-wide leading-relaxed">Mr. Westan Jayarathne<br />& Mrs. Srima Rajapaksha</p>
                       </div>
-                      <h3 className="text-5xl md:text-7xl font-playball text-theme-800 group-hover:scale-110 transition-transform duration-700 pt-6 drop-shadow-sm">Vishan</h3>
+                      <h3 className="text-5xl md:text-7xl font-playball text-theme-800 group-hover:scale-110 transition-transform duration-700 pt-6 drop-shadow-sm">Nathasha</h3>
                     </div>
                   </motion.div>
                 </div>
@@ -1007,7 +1007,7 @@ export default function WeddingInvitation() {
                         Thank You
                       </div>
                       <p className="text-[9px] md:text-[11px] uppercase tracking-[0.8em] text-theme-600 font-bold relative z-10 bg-[#FFFFFF] px-6 py-2 rounded-full border border-theme-100/50 shadow-sm">With Love</p>
-                      <h3 className="font-playball text-[3.2rem] sm:text-6xl md:text-8xl text-theme-900 relative z-10 drop-shadow-sm px-4 pt-4 leading-none">Nathasha & Vishan</h3>
+                      <h3 className="font-playball text-[3.2rem] sm:text-6xl md:text-8xl text-theme-900 relative z-10 drop-shadow-sm px-4 pt-4 leading-none">Vishan & Nathasha</h3>
 
                       <motion.img
                         initial={{ opacity: 0, y: 24, scale: 0.95 }}
@@ -1026,7 +1026,7 @@ export default function WeddingInvitation() {
               {/* Footer */}
               <footer className="py-20 border-t border-theme-200/30 text-center relative z-10 space-y-6">
                 <p className="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-stone-500 font-bold">
-                  © 2026 Nathasha & Vishan. All rights reserved.
+                  © 2026 Vishan & Nathasha. All rights reserved.
                 </p>
 
                 <div className="flex flex-col items-center gap-2 pt-8">
