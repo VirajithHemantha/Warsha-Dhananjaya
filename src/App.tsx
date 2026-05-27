@@ -205,7 +205,7 @@ function CountdownTimer() {
   );
 }
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPF232Meqv4P56WQku65d5dlJgzU5wz799BJkanXfcSqkjbgd7N54Xrs19Ux619qS9/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvlsuJlJRDCWlOq6MDTaR5L86hzjbDI2NAWuUixPRGxh1v-NYC0pY05ygJhKOP7KlnZw/exec";
 
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
