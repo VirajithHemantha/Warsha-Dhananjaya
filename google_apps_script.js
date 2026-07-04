@@ -2,7 +2,7 @@
  * Google Apps Script to handle RSVP and Wishes submissions.
  * 
  * Instructions:
- * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1GjNiYfTocKqR0YzttQzVaU0CQdcjXU9rayiB2UIQsAE/edit
+ * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1H-QZSf5q9UgX57VWRgr_rXq0MqfQALhoW45QFa6t7wY/edit
  * 2. Go to Extensions > Apps Script.
  * 3. Delete any code in Code.gs and paste this code.
  * 4. Click Save (Disk icon).
@@ -26,7 +26,7 @@ function doPost(e) {
 
 function handleRequest(e) {
   // Your Google Sheet ID
-  var spreadsheetId = "1GjNiYfTocKqR0YzttQzVaU0CQdcjXU9rayiB2UIQsAE";
+  var spreadsheetId = "1H-QZSf5q9UgX57VWRgr_rXq0MqfQALhoW45QFa6t7wY";
   
   // Set CORS headers for responses
   var output = ContentService.createTextOutput();

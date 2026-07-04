@@ -205,16 +205,20 @@ function CountdownTimer() {
   );
 }
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvlsuJlJRDCWlOq6MDTaR5L86hzjbDI2NAWuUixPRGxh1v-NYC0pY05ygJhKOP7KlnZw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZaAOTmgw9-eImPydIaTmgjUJFBBkS1GfcDN6FIKtjxKFJQRYM1RcBbbyksqRleFNj/exec";
 
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
   const [isLowPerformanceMode, setIsLowPerformanceMode] = useState(false);
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
+  // Read guest name from URL if provided by Admin
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestNameFromUrl = urlParams.get('n') || "";
+
   // Form State
-  const [rsvpData, setRsvpData] = useState({ name: "", guests: "1", dietary: "" });
-  const [wishData, setWishData] = useState({ name: "", message: "" });
+  const [rsvpData, setRsvpData] = useState({ name: guestNameFromUrl, guests: "1", dietary: "" });
+  const [wishData, setWishData] = useState({ name: guestNameFromUrl, message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<null | "rsvp_success" | "wish_success" | "error">(null);
 
@@ -256,8 +260,8 @@ export default function WeddingInvitation() {
       setSubmitStatus(`${formName}_success` as any);
 
       // Reset forms
-      if (formName === "rsvp") setRsvpData({ name: "", guests: "1", dietary: "" });
-      else setWishData({ name: "", message: "" });
+      if (formName === "rsvp") setRsvpData({ name: guestNameFromUrl, guests: "1", dietary: "" });
+      else setWishData({ name: guestNameFromUrl, message: "" });
 
     } catch (error) {
       console.error("Submission error:", error);
@@ -552,6 +556,11 @@ export default function WeddingInvitation() {
                   <div className="w-[2px] h-16 md:h-24 bg-gradient-to-b from-transparent via-theme-400 to-transparent mb-8 md:mb-12 shadow-[0_0_10px_rgba(192,192,192,0.3)]" />
                   <p className="text-zinc-800 text-[10px] md:text-[14px] tracking-[0.6em] md:tracking-[0.8em] uppercase font-bold text-center leading-relaxed max-w-2xl px-4">
                     <span className="text-theme-500 block text-[8px] md:text-[10px] mb-3 md:mb-4 tracking-[0.8em]">Wedding Celebration</span>
+                    {new URLSearchParams(window.location.search).get('n') && (
+                      <span className="block mb-4 text-theme-700 font-cinzel text-lg md:text-2xl capitalize tracking-normal">
+                        Dear {new URLSearchParams(window.location.search).get('p')} {new URLSearchParams(window.location.search).get('n')},
+                      </span>
+                    )}
                     You are cordially invited to<br className="hidden md:block" />
                     <span className="text-theme-600">celebrate the union of</span>
                   </p>
