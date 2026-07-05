@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const PREFIXES = [
+  '',
   'Mr.',
   'Mrs.',
   'Mr. & Mrs.',
@@ -28,7 +29,7 @@ export default function Admin() {
     const link = url.toString();
     setGeneratedLink(link);
 
-    const message = `Dear ${prefix} ${guestName} ❤️
+    const message = `Dear ${prefix ? prefix + ' ' : ''}${guestName} ❤️
 
 With joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.
 
@@ -71,8 +72,8 @@ With love,
               onChange={(e) => setPrefix(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all"
             >
-              {PREFIXES.map(p => (
-                <option key={p} value={p}>{p}</option>
+              {PREFIXES.map((p, idx) => (
+                <option key={idx} value={p}>{p || '(No prefix)'}</option>
               ))}
             </select>
           </div>
